@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:andorid = "http://schemas.android.com/apk/res/android"
+    xmlns:app = "http://schemas.android.com/apk/res-auto"
+    andorid:layout_width="match_parent"
+    andorid:layout_height="wrap_content"
+    andorid:background="#1d74ff"
+    andorid:layout_margin="5dp"
+    app:cardCornerRadius="10dp">
+
+    <LinearLayout
+        andorid:background="#1d74ff"
+        andorid:layout_width="match_parent"
+        andorid:layout_height="wrap_content"
+        andorid:orientation="vertical">
+        <TextView
+            andorid:id="@+id/album_name"
+            andorid:layout_width="wrap_content"
+            andorid:layout_height="wrap_content"
+            andorid:layout_gravity="center_horizontal"
+            andorid:layout_margin="5dp"
+            andorid:textSize="30sp"
+            andorid:textColor="#fff"/>
+    </LinearLayout>
+</android.support.v7.widget.CardView>

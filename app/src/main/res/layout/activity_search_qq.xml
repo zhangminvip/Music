@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android = "http://schemas.android.com/apk/res/android"
+
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/music_title_qq"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:maxLines="1"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:textColor="#fff"
+        android:textSize="25sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <LinearLayout
+
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+
+        android:orientation="horizontal">
+
+
+
+        <!--<Button-->
+            <!--android:id="@+id/previous_qq"-->
+            <!--android:layout_width="50dp"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:layout_margin="20dp"-->
+            <!--android:onClick="preview"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:background="@mipmap/previous_128"/>-->
+
+        <FrameLayout
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/play_qq"
+                android:background="@mipmap/play_128"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="10dp"
+                android:visibility="gone"
+                android:onClick="play"/>
+
+            <Button
+
+                android:id="@+id/pause_qq"
+                android:background="@mipmap/pause_128"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="10dp"
+                android:onClick="pause"/>
+
+        </FrameLayout>
+
+        <!--<Button-->
+            <!--android:id="@+id/next_qq"-->
+            <!--android:layout_width="50dp"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:layout_margin="20dp"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:background="@mipmap/next_128"-->
+            <!--android:onClick="next"/>-->
+
+    </LinearLayout>
+
+    <com.gg.tiantianshouyin.Volume
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.gg.tiantianshouyin.Volume>
+
+
+
+</LinearLayout>

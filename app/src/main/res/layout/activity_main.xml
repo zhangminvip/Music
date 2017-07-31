@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/mainactivity"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/music_title"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+
+        android:maxLines="1"
+        android:gravity="center_horizontal"
+        android:layout_margin="20dp"
+
+        android:textColor="#fff"
+        android:textSize="25sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/play"/>
+
+    <Button
+        android:id="@+id/previous"
+        android:visibility="gone"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_toLeftOf="@+id/play"
+        android:layout_margin="20dp"
+        android:layout_centerVertical="true"
+        android:onClick="preview"
+        android:background="@mipmap/previous_128"/>
+    <Button
+        android:id="@+id/play"
+        android:background="@mipmap/play_128"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="10dp"
+        android:layout_centerInParent="true"
+        android:onClick="play"/>
+
+    <Button
+        android:id="@+id/pause"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="10dp"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:background="@mipmap/pause_128"
+        android:onClick="pause"/>
+
+
+
+    <Button
+        android:id="@+id/next"
+        android:visibility="gone"
+
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+       android:layout_toRightOf="@+id/play"
+        android:background="@mipmap/next_128"
+        android:layout_centerVertical="true"
+        android:onClick="next"/>
+
+    <com.gg.tiantianshouyin.Volume
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/play"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.gg.tiantianshouyin.Volume>
+
+</RelativeLayout>

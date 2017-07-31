@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.gg.tiantianshouyin">
+
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/app_icon"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="app_key"
+            android:value="64be2d95215b945c02101a35b7cebef1">
+        </meta-data>
+        <meta-data
+            android:name="pack_id"
+            android:value="com.testopensourceapplication.tingproject">
+        </meta-data>
+
+        <activity android:name=".MainActivity">
+
+        </activity>
+
+        <activity android:name=".launch_interface.CategoryActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+
+        </activity>
+
+
+        <activity android:name=".TagActivity"></activity>
+
+        <activity android:name=".AlbumActivity"></activity>
+
+        <activity android:name=".TrackActivity"></activity>
+
+        <activity android:name=".SearchActivity"
+                  android:exported="true"></activity>
+
+        <activity android:name=".qqmusic.SearchActivity"
+                  android:exported="true"
+                  android:launchMode="singleInstance">
+
+        </activity>
+
+        <!--<receiver-->
+        <!--android:name=".PlayerControlReceiver"-->
+        <!--android:exported="false">-->
+        <!--<intent-filter>-->
+        <!--<action android:name="com.infisight.ting.ACTION_CONTROL_PLAY_PAUSE"/>-->
+        <!--<action android:name="com.infisight.ting.ACTION_CONTROL_PLAY_NEXT"/>-->
+        <!--<action android:name="com.infisight.ting.ACTION_CONTROL_PLAY_PRE"/>-->
+        <!--</intent-filter>-->
+        <!--</receiver>-->
+
+        <service
+            android:name="com.ximalaya.ting.android.opensdk.player.service.XmPlayerService"
+            android:process=":player"></service>
+
+        <receiver
+            android:name="com.ximalaya.ting.android.opensdk.player.receive.WireControlReceiver"
+            android:exported="true"></receiver>
+
+
+
+
+    </application>
+
+</manifest>
