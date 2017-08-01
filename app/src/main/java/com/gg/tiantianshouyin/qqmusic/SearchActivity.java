@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,7 +36,7 @@ public class SearchActivity  extends Activity implements View.OnClickListener {
     private Button preview;
     private Button next;
     private TextView title;
-    private RelativeLayout layout;
+    private LinearLayout layout;
 
     private MediaPlayer mp = new MediaPlayer();
 
@@ -47,7 +48,7 @@ public class SearchActivity  extends Activity implements View.OnClickListener {
 
 
         // 模糊背景
-        layout = (RelativeLayout)this.findViewById(R.id.mainactivity);
+        layout = (LinearLayout)this.findViewById(R.id.mainactivity_qq);
         setBackground(R.drawable.background);
 
 
@@ -88,10 +89,7 @@ public class SearchActivity  extends Activity implements View.OnClickListener {
         });
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
+
 
     private void initView() {
         play = (Button) findViewById(R.id.play_qq);
@@ -206,10 +204,54 @@ public class SearchActivity  extends Activity implements View.OnClickListener {
         }
     }
 
+    @Override
+    protected void onRestart() {
+
+
+        Intent intent = getIntent();
+        music_name = intent.getStringExtra("music_name");
+
+
+        initView();
+        title.setText(music_name);
+        title.requestFocus();
+        initEvent();
+        searchSong();
+
+        Log.d("生命周期","onRestart");
+        Log.d("生命周期","onRestart:: music_name:" +music_name);
+    }
+    @Override
+    protected void onStart(){
+        super.onStart();
+        Log.d("生命周期","onStart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("生命周期","onResume");
+    }
+
+    @Override
+    protected void onStop(){
+
+        super.onStop();
+        Log.d("生命周期","onStop");
+        if (mp != null) {
+            mp.stop();
+            mp.release();
+        }
+        finish();
+
+    }
+
     protected void onDestroy() {
         if (mp != null) {
+            mp.stop();
             mp.release();
         }
         super.onDestroy();
+        Log.d("生命周期","onDestory");
     }
 }

@@ -50,7 +50,7 @@ public class MainActivity extends Activity {
     public List<Album> mAlbumList = new ArrayList<Album>();              //标签后专辑
     public List<Track> mTrackList = new ArrayList<Track>();               //专辑下的声音
 
-    private RelativeLayout layout;
+    private RelativeLayout layout;    //为毛玻璃准备
 
 
     private XmPlayerManager mPlayerManager;
