@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.gg.tiantianshouyin.MyApplication;
 import com.gg.tiantianshouyin.R;
@@ -43,16 +44,17 @@ class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         holder.mImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ToastUtils.show(holder.mImageView.getContext(), "" + position);
-                switch (position){
+//                ToastUtils.show(holder.mImageView.getContext(), "" + position);                    // Toast
 
+                switch (position){
                     case 0:
-                        String data_children = "children";
-                        Intent intent_children = new Intent(MyApplication.getContext(),TagActivity.class);
-                        intent_children.putExtra("category",data_children);
-                        intent_children.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        MyApplication.getContext().startActivity(intent_children);
-                        break;
+
+                            String data_children = "children";
+                            Intent intent_children = new Intent(MyApplication.getContext(), TagActivity.class);
+                            intent_children.putExtra("category", data_children);
+                            intent_children.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            MyApplication.getContext().startActivity(intent_children);
+                            break;
                     case 1:
                         String data_humanity = "humanity";
                         Intent intent_humanity = new Intent(MyApplication.getContext(),TagActivity.class);

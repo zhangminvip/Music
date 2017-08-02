@@ -212,10 +212,10 @@ public class SearchActivity  extends Activity implements View.OnClickListener {
         music_name = intent.getStringExtra("music_name");
 
 
-        initView();
+
         title.setText(music_name);
         title.requestFocus();
-        initEvent();
+
         searchSong();
 
         Log.d("生命周期","onRestart");
@@ -242,7 +242,7 @@ public class SearchActivity  extends Activity implements View.OnClickListener {
             mp.stop();
             mp.release();
         }
-        finish();
+        finish();    // 在此处调用onDestroy并不能finish掉activity，或许onDestroy只是一个回调，处理一些返回键的事情，点桌面键必须手动finish()....
 
     }
 

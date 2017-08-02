@@ -1,19 +1,26 @@
 package com.gg.tiantianshouyin;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.gg.tiantianshouyin.function.FastBlurUtil;
 import com.gg.tiantianshouyin.launch_interface.BlurBitmapUtils;
 import com.ximalaya.ting.android.opensdk.model.PlayableModel;
@@ -28,6 +35,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import jameson.io.library.util.ToastUtils;
+
 import static com.ximalaya.ting.android.opensdk.player.constants.PlayerConstants.STATE_PAUSED;
 import static com.ximalaya.ting.android.opensdk.player.constants.PlayerConstants.STATE_STARTED;
 
@@ -37,14 +46,11 @@ public class MainActivity extends Activity {
     private Button btn_play;
     private Button btn_next;
     private Button btn_previous;
-
     private TextView title;
-
     private int data;
 
     private static final String TAG = "zhangmin";
     private static final String APP_SECRET = "2d5e40f87904d6cb292b6388e82680a7";
-
     public List<Category> mCategoryList = new ArrayList<Category>();      //类别列表  有声书 、音乐、娱乐。。。。。
     public List<Tag> mTagList = new ArrayList<Tag>();                      //类别下的标签列表    悬疑、 言情  幻想  等
     public List<Album> mAlbumList = new ArrayList<Album>();              //标签后专辑
@@ -83,6 +89,28 @@ public class MainActivity extends Activity {
         mPlayerManager.play();
         checkPlayerStatus();
         initEvent();
+
+    }
+
+    /**
+     * 设置自定义toast
+     * @param text
+     * @param duration
+     */
+
+    public void makeCustomToast(String text , int duration){
+        View layout = getLayoutInflater().inflate(R.layout.custom_toast,
+                (ViewGroup) findViewById(R.id.custom_toast_layout_id));
+        // set a message
+        TextView toastText = (TextView) layout.findViewById(R.id.toasttext);
+        toastText.setText(text);
+
+        // Toast...
+        Toast toast = new Toast(this);
+        toast.setGravity(Gravity.BOTTOM, 0, 0);
+        toast.setDuration(duration);
+        toast.setView(layout);
+        toast.show();
     }
 
     /**
@@ -90,8 +118,6 @@ public class MainActivity extends Activity {
      */
     @SuppressWarnings("deprecation")
     private void setBackground(int id){
-
-
         Bitmap originbmp = null;
 
          originbmp = BitmapFactory.decodeResource(getResources(),id);
@@ -108,9 +134,6 @@ public class MainActivity extends Activity {
             }
         });
     }
-
-
-
 
     /**
      * 初始化事件,设置播放器监听器。
@@ -150,7 +173,8 @@ public class MainActivity extends Activity {
 
             @Override
             public void onBufferingStart() {
-
+//                ToastUtils.show(MainActivity.this,"缓冲中");
+                makeCustomToast("缓冲中",Toast.LENGTH_SHORT);
             }
 
             @Override
@@ -173,7 +197,11 @@ public class MainActivity extends Activity {
                 return false;
             }
         });
+
+
     }
+
+
 
 
 
@@ -213,15 +241,12 @@ public class MainActivity extends Activity {
         mPlayerManager.playList(TrackActivity.mTrackList, data);
         mPlayerManager.play();
 
+
     }
 
-    public void stop(View view) {
-        Log.d(TAG, "stop");
-        mPlayerManager.stop();
-    }
+
 
     public void pause(View view) {
-
         btn_pause.setVisibility(View.INVISIBLE);
         btn_play.setVisibility(View.VISIBLE);
         Log.d(TAG, "pause");
@@ -248,7 +273,7 @@ public class MainActivity extends Activity {
 
     @Override
     public void onPause(){
-        mPlayerManager.stop();
+        mPlayerManager.pause();
 
         super.onPause();
     }
@@ -257,5 +282,12 @@ public class MainActivity extends Activity {
     protected void onDestroy() {
         mPlayerManager.release();
         super.onDestroy();
+    }
+
+
+    @Override
+    public void onResume(){
+        checkPlayerStatus();
+        super.onResume();
     }
 }

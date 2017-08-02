@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView
-    xmlns:andorid = "http://schemas.android.com/apk/res/android"
+    xmlns:android = "http://schemas.android.com/apk/res/android"
     xmlns:app = "http://schemas.android.com/apk/res-auto"
-    andorid:layout_width="match_parent"
-    andorid:layout_height="wrap_content"
-    andorid:background="#1d74ff"
-    andorid:layout_margin="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:layout_margin="5dp"
     app:cardCornerRadius="10dp">
 
     <LinearLayout
-        andorid:background="#1d74ff"
-        andorid:layout_width="match_parent"
-        andorid:layout_height="wrap_content"
-        andorid:orientation="vertical">
+        android:background="#00bbff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
 
         <TextView
-            andorid:id="@+id/tag_name"
-            andorid:layout_width="wrap_content"
-            andorid:layout_height="wrap_content"
-            andorid:layout_gravity="center_horizontal"
-            andorid:layout_margin="5dp"
-            andorid:textSize="30sp"
-            andorid:textColor="#fff"/>
+            android:id="@+id/tag_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="5dp"
+            android:textSize="30sp"
+            android:textColor="#fff"/>
 
 
     </LinearLayout>
